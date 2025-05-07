@@ -4,11 +4,11 @@ import '../styles/global.css';
 
 // data source
 // replace temporary JSON placeholder API
-const source = 'https://jsonplaceholder.typicode.com/users';
+const source = 'https://assets.codepen.io/16425/jelly-belly-beans.json';
 // fetch the data
 const res = await fetch(source); 
 // store retreived data
-const data = await res.json();
+const jellyBeans = await res.json();
 ---
 
 <html lang="en">
@@ -26,27 +26,22 @@ const data = await res.json();
 	<body>
 		
 		<header class="masthead">
-			<h1 class="site-title">Gallery</h1>
+			<h1 class="site-title">JellyBelly</h1>
 		</header>
 
-		<main id="content" class="main-area">
+		<main id="content" class="wrapper">
 
-			<ul class="cards">
+			<ul class="grid">
 		  
 				<!-- Your API Data -->
 				{
-					data.map( item =>
-					<li class="card-item">
-						<a href="#">
-							<figure class="card">
-							<img src="https://assets.codepen.io/16425/image-placeholder.png" alt="Placeholder">
-							<figcaption class="caption">
-								<h3 class="caption-title">{item.name}</h3>
-								<p>{item.company.catchPhrase}</p>
-							</figcaption>
-							</figure>
-						</a>
+					jellyBeans.map( bean =>
+					<li>
+						<h3>{ bean.flavorName }</h3>
+						<img src={bean.imageUrl}/>
+						<p>{ bean.description }</p>
 					</li> 
+					
 					)
 				}
 		  
